@@ -1,5 +1,5 @@
-export default async function assignSpiritAnimal(name) {
-    const response = await fetch('http://localhost:8080//spiritanimals/assign', {
+async function assignSpiritAnimal(name) {
+    const response = await fetch('http://localhost:8080/spiritanimals/assign', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -12,7 +12,8 @@ export default async function assignSpiritAnimal(name) {
 };
 
 async function whatIsMySpiritAnimal(workflowId) {
-    const response = await fetch('http://localhost:8080//spiritanimals/whatIs', {
+    console.log("calling whatIsMySpiritAnimal for ", workflowId);
+    const response = await fetch('http://localhost:8080/spiritanimals/whatIs', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -25,7 +26,7 @@ async function whatIsMySpiritAnimal(workflowId) {
 }
 
 async function aPoemAboutMySpiritAnimal(workflowId) {
-    const response = await fetch('http://localhost:8080//spiritanimals/poem', {
+    const response = await fetch('http://localhost:8080/spiritanimals/poem', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -38,7 +39,7 @@ async function aPoemAboutMySpiritAnimal(workflowId) {
 }
 
 async function anotherPoemAboutMySpiritAnimal(workflowId) {
-    const response = await fetch('http://localhost:8080//spiritanimals/addToPoem', {
+    const response = await fetch('http://localhost:8080/spiritanimals/addToPoem', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
