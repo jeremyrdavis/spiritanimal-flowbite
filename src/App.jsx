@@ -1,8 +1,7 @@
-import { Button, Modal } from "flowbite-react";
 import { useState } from 'react'
 import './App.css'
 import { WorkflowForms, WorkflowForm01, WorkflowForm02} from "./components/WorkflowForms.jsx";
-
+import { assignSpiritAnimal, whatIsMySpiritAnimal, aPoemAboutMySpiritAnimal, anotherPoemAboutMySpiritAnimal, likeMySpiritAnimal, submitFeedbackAboutThisDemo } from './components/BackendCalls.js';
 function App() {
   const [openModal, setOpenModal] = useState(true);
 
@@ -20,7 +19,15 @@ function App() {
 
     const updateWorkflow = (workflow) => {
         console.log("updating workflow: ", workflow);
-        setWorkflow(workflow);
+        // switch (workflow.step) {
+        //     case 1:
+        //         assignSpiritAnimal(workflow.name).then(result => {
+        //             console.log("data: ", result);
+        //             setWorkflow(result);
+        //         });
+        //     default:
+        //         break;
+        // setWorkflow(workflow);
     }
 
   return (
@@ -30,4 +37,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
