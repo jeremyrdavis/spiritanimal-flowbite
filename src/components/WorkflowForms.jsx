@@ -16,9 +16,9 @@ const switchForm = (workflow, setWorkflow) => {
         case 1:
             return <WorkflowForm01 workflow={workflow} setWorkflow={setWorkflow} />;
         case 2:
-            return <WorkflowForm02  setWorkflow={setWorkflow} />;
+            return <WorkflowForm02  workflow={workflow} setWorkflow={setWorkflow} />;
         default:
-            return <WorkflowForm01  setWorkflow={setWorkflow} />;
+            return <WorkflowForm01  workflow={workflow} setWorkflow={setWorkflow} />;
     }
 }
 
@@ -37,7 +37,7 @@ export function WorkflowForm01 ({workflow, setWorkflow}) {
         <Modal.Header>Find Your Spirit Animal</Modal.Header>
             <form id="nameform" onSubmit={(e) => {
                 e.preventDefault();
-                setWorkflow({...workflow, name: e.target.name.value, step: 2});
+                setWorkflow({...workflow, name: e.target.name.value});
             }}>
             <Modal.Body>
                 <Label>Name:</Label>
@@ -55,9 +55,22 @@ export function WorkflowForm02({workflow, setWorkflow}) {
     return (
         <>
             <h1>What is your spirit animal?</h1>
-            <p>{workflow.animalName}</p>
+            <p>{workflow.spiritAnimal}</p>
             <form id="whatIsForm" onSubmit={setWorkflow}>
             <Button type="submit" >What is my spirit animal?</Button>
+            </form>
+            <Modal.Header>Your Spirit Animal</Modal.Header>
+            <form id="nameform" onSubmit={(e) => {
+                e.preventDefault();
+                setWorkflow({...workflow, name: e.target.name.value});
+                }}>
+                <Modal.Body>
+                    {workflow.spiritAnimal}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button type="submit">I Am a {workflow.spiritAnimal}!</Button>
+                    <Button type="submit">What is a {workflow.spiritAnimal}?</Button>
+                </Modal.Footer>
             </form>
         </>
     );

@@ -9,7 +9,7 @@ function App() {
         id: null,
         step: 1,
         name: null,
-        animalName: null,
+        spiritAnimal: null,
         whatIs: null,
         poem: null,
         updatedPoem: null,
@@ -17,18 +17,49 @@ function App() {
         feedback: null
     });
 
-    const updateWorkflow = (workflow) => {
-        console.log("updating workflow: ", workflow);
-        // switch (workflow.step) {
-        //     case 1:
-        //         assignSpiritAnimal(workflow.name).then(result => {
-        //             console.log("data: ", result);
-        //             setWorkflow(result);
-        //         });
-        //     default:
-        //         break;
-        // setWorkflow(workflow);
+    const updateWorkflow = async (workflow) => {
+        switch (workflow.step) {
+            case 1:
+                await assignSpiritAnimal(workflow.name).then(result => {
+                    console.log("result: ", result);
+                    setWorkflow({
+                        ...workflow,
+                        id: result.workflowId,
+                        step: workflow.step + 1,
+                        spiritAnimal: result.spiritAnimal,
+                        name: workflow.name,
+                        whatIs: result.whatIs,
+                        poem: result.poem,
+                        updatedPoem: result.updatedPoem,
+                        liked: result.liked,
+                        feedback: result.feedback
+                    })
+                });
+            default:
+                break;
+        }
     }
+
+    // async function callBackend(workflow) {
+    //     switch (workflow.step) {
+    //         case 1:
+    //             await assignSpiritAnimal(workflow.name).then(result => {
+    //                 console.log("result: ", result);
+    //                 setWorkflow({...workflow,
+    //                     id: result.workflowId,
+    //                     step: workflow.step + 1,
+    //                     spiritAnimal: result.spiritAnimal,
+    //                     name: workflow.name,
+    //                     whatIs: result.whatIs,
+    //                     poem: result.poem,
+    //                     updatedPoem: result.updatedPoem,
+    //                     liked: result.liked,
+    //                     feedback: result.feedback
+    //             })});
+    //         default:
+    //             break;
+    //     }
+    // }
 
   return (
     <>
