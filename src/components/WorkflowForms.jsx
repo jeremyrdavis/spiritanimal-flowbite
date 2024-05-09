@@ -30,7 +30,7 @@ const switchForm = (workflow, updateWorkflow) => {
     }
 }
 
-export function WorkflowForms ({workflow, openModal, updateWorkflow}) {
+export function WorkflowForms ({workflow, openModal, setOpenModal, updateWorkflow}) {
     return(
         <Modal show={openModal} onClose={() => setOpenModal(false)}>
                 {switchForm(workflow, updateWorkflow)}
@@ -63,8 +63,8 @@ export function WorkflowForm02({workflow, updateWorkflow}) {
     console.log("02 workflow: ", workflow);
     return (
         <>
-            <Modal.Header>Your Spirit Animal</Modal.Header>
-            <form id="nameform" onSubmit={(e) => {
+            <Modal.Header>Your Spirit Animal Is a {workflow.spiritAnimal}</Modal.Header>
+            <form id="whatIsForm" onSubmit={(e) => {
                 e.preventDefault();
                 updateWorkflow({...workflow, name: e.target.name.value});
                 }}>
@@ -73,7 +73,7 @@ export function WorkflowForm02({workflow, updateWorkflow}) {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button type="submit">I Am a {workflow.spiritAnimal}!</Button>
-                    <Button type="submit">What is a {workflow.spiritAnimal}?</Button>
+                    <Button type="submit" >What is a {workflow.spiritAnimal}?</Button>
                 </Modal.Footer>
             </form>
         </>

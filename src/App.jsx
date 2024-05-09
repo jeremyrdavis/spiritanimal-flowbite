@@ -3,7 +3,8 @@ import './App.css'
 import { WorkflowForms, WorkflowForm01, WorkflowForm02} from "./components/WorkflowForms.jsx";
 import { assignSpiritAnimal, whatIsMySpiritAnimal, aPoemAboutMySpiritAnimal, anotherPoemAboutMySpiritAnimal, likeMySpiritAnimal, submitFeedbackAboutThisDemo } from './components/BackendCalls.js';
 function App() {
-  const [openModal, setOpenModal] = useState(true);
+
+    const [openModal, setOpenModal] = useState(true);
 
     const [workflow, setWorkflow] = useState({
         id: null,
@@ -49,30 +50,9 @@ function App() {
             return submitFeedbackAboutThisDemo(workflow.id, workflow.feedback);
     }}
 
-    // async function callBackend(workflow) {
-    //     switch (workflow.step) {
-    //         case 1:
-    //             await assignSpiritAnimal(workflow.name).then(result => {
-    //                 console.log("result: ", result);
-    //                 setWorkflow({...workflow,
-    //                     id: result.workflowId,
-    //                     step: workflow.step + 1,
-    //                     spiritAnimal: result.spiritAnimal,
-    //                     name: workflow.name,
-    //                     whatIs: result.whatIs,
-    //                     poem: result.poem,
-    //                     updatedPoem: result.updatedPoem,
-    //                     liked: result.liked,
-    //                     feedback: result.feedback
-    //             })});
-    //         default:
-    //             break;
-    //     }
-    // }
-
   return (
     <>
-        <WorkflowForms workflow={workflow} openModal={openModal} updateWorkflow={updateWorkflow}/>
+        <WorkflowForms workflow={workflow} openModal={openModal} setOpenModel={setOpenModal} updateWorkflow={updateWorkflow}/>
     </>
   )
 }
