@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import './App.css'
+import { Button } from "flowbite-react";
+
 import { WorkflowForms, WorkflowForm01, WorkflowForm02} from "./components/WorkflowForms.jsx";
 import { assignSpiritAnimal, whatIsMySpiritAnimal, aPoemAboutMySpiritAnimal, anotherPoemAboutMySpiritAnimal, likeMySpiritAnimal, submitFeedbackAboutThisDemo } from './components/BackendCalls.js';
 function App() {
@@ -34,6 +36,9 @@ function App() {
         });
     }
 
+    function onCloseModal() {
+        setOpenModal(false);
+    }
     async function callBackend(workflow) {
         switch(workflow.step) {
         case 1:
@@ -52,7 +57,8 @@ function App() {
 
   return (
     <>
-        <WorkflowForms workflow={workflow} openModal={openModal} setOpenModel={setOpenModal} updateWorkflow={updateWorkflow}/>
+        <Button onClick={() => setOpenModal(true)}>Toggle modal</Button>
+        <WorkflowForms workflow={workflow} openModal={openModal} setOpenModal={setOpenModal} updateWorkflow={updateWorkflow}/>
     </>
   )
 }
