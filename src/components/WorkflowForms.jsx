@@ -64,16 +64,20 @@ export function WorkflowForm02({workflow, updateWorkflow}) {
     return (
         <>
             <Modal.Header>Your Spirit Animal Is a {workflow.spiritAnimal}</Modal.Header>
-            <form id="whatIsForm" onSubmit={(e) => {
-                e.preventDefault();
-                updateWorkflow({...workflow, name: e.target.name.value});
-                }}>
+            <form id="whatIsForm">
                 <Modal.Body>
                     {workflow.spiritAnimal}
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button type="submit">I Am a {workflow.spiritAnimal}!</Button>
-                    <Button type="submit" >What is a {workflow.spiritAnimal}?</Button>
+                    <Button type="submit" onClick={(e) => {
+                        e.preventDefault();
+                        updateWorkflow({...workflow, liked:true});
+                    }}>I Am a {workflow.spiritAnimal}!</Button>
+                    <Button type="submit" onClick={(e) => {
+                        console.log("likeSpiritAnimal: ", workflow);
+                        e.preventDefault();
+                        updateWorkflow({...workflow});
+                    }}>What is a {workflow.spiritAnimal}?</Button>
                 </Modal.Footer>
             </form>
         </>
@@ -92,7 +96,10 @@ export function WorkflowForm03({workflow, updateWorkflow}) {
                     {workflow.whatIs}
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button type="submit">I'm Happy!</Button>
+                    <Button type="submit" onClick={(e) => {
+                        e.preventDefault();
+                        updateWorkflow({...workflow, liked:true});
+                    }}>I'm Happy with My {workflow.spiritAnimal}!</Button>
                     <Button type="submit">I'm Still Not Convinced</Button>
                 </Modal.Footer>
             </form>
@@ -112,7 +119,10 @@ export function WorkflowForm04({workflow, updateWorkflow}) {
                     {workflow.poem}
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button type="submit">This Poem Changed My Mind!</Button>
+                    <Button type="submit" onClick={(e) => {
+                        e.preventDefault();
+                        updateWorkflow({...workflow, liked:true});
+                    }}>This Poem Changed My Mind About My {workflow.spiritAnimal}!</Button>
                     <Button type="submit">No</Button>
                 </Modal.Footer>
             </form>
@@ -132,7 +142,10 @@ export function WorkflowForm05({workflow, updateWorkflow}) {
                     {workflow.updatedPoem}
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button type="submit">I Like My {workflow.spiritAnimal} Now!</Button>
+                    <Button type="submit" onClick={(e) => {
+                        e.preventDefault();
+                        updateWorkflow({...workflow, liked:true});
+                    }}>This One Did the Trick!</Button>
                     <Button type="submit">Still No</Button>
                 </Modal.Footer>
             </form>
@@ -141,12 +154,13 @@ export function WorkflowForm05({workflow, updateWorkflow}) {
 }
 
 export function WorkflowForm06({workflow, updateWorkflow}) {
+    console.log("06 workflow: ", workflow);
     return(
         <>
             <Modal.Header>Please Tell Us How You Feel About This Demo</Modal.Header>
             <form id="feedbackForm" onSubmit={(e) => {
                 e.preventDefault();
-                updateWorkflow({...workflow});
+                updateWorkflow({...workflow, feedback: e.target.feedback.value});
             }}>
                 <Modal.Body>
                     <Label>Feedback:</Label>

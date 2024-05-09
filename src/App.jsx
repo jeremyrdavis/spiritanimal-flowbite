@@ -21,7 +21,17 @@ function App() {
     });
 
     const updateWorkflow = async (workflow) => {
+        console.log("updateWorkflow: ", workflow);
+        // if the user has liked their spirit animal, skip the poem and feedback steps
+        if(workflow.liked === true && workflow.step < 5) {
+            workflow.step = 5;
+        }
+        // if the user has submitted feedback
         let result = await callBackend(workflow);
+        if(workflow.step == 6) {
+            console.log("send feedback: ", workflow.feedback);
+            onCloseModal();
+        }
         console.log("result: ", result);
         setWorkflow({
             id: result.id,
@@ -58,7 +68,7 @@ function App() {
   return (
     <>
         <Button onClick={() => setOpenModal(true)}>Toggle modal</Button>
-        <WorkflowForms workflow={workflow} openModal={openModal} setOpenModal={setOpenModal} updateWorkflow={updateWorkflow}/>
+        <WorkflowForms workflow={workflow} openModal={openModal} setOpenModal={setOpenModal} updateWorkflow={updateWorkflow} />
     </>
   )
 }
