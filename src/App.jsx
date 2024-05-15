@@ -44,6 +44,19 @@ function App() {
             liked: result.liked,
             feedback: result.feedback
         });
+        if(workflow.step == 6) {
+            setWorkflow({
+                id: '',
+                step: 1,
+                spiritAnimal: '',
+                name: '',
+                whatIs: '',
+                poem: '',
+                updatedPoem: '',
+                liked: '',
+                feedback: ''
+            });
+        }
     }
 
     function onCloseModal() {
@@ -67,7 +80,7 @@ function App() {
 
   return (
     <>
-        <Button onClick={() => setOpenModal(true)}>Toggle modal</Button>
+        <Button onClick={() => setOpenModal(true)}>Get Another Spirit Animal</Button>
         <WorkflowForms workflow={workflow} openModal={openModal} setOpenModal={setOpenModal} updateWorkflow={updateWorkflow} />
     </>
   )
