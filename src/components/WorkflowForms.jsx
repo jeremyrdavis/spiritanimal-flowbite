@@ -106,7 +106,7 @@ export function WorkflowForm02({workflow, updateWorkflow}) {
 export function WorkflowForm03({workflow, updateWorkflow}) {
     return(
         <>
-            <Modal.Header>Your Spirit Animal Is</Modal.Header>
+            <Modal.Header>{workflow.spiritAnimal}s Are</Modal.Header>
             <form id="whatIsForm" onSubmit={(e) => {
                 e.preventDefault();
                 updateWorkflow({...workflow});
@@ -119,7 +119,7 @@ export function WorkflowForm03({workflow, updateWorkflow}) {
                         e.preventDefault();
                         updateWorkflow({...workflow, liked:true});
                     }}>I'm Happy with My {workflow.spiritAnimal}!</Button>
-                    <Button type="submit">I'm Still Not Convinced</Button>
+                    <Button type="submit">I'm Not Sure</Button>
                 </Modal.Footer>
             </form>
         </>
@@ -142,7 +142,7 @@ export function WorkflowForm04({workflow, updateWorkflow}) {
                         e.preventDefault();
                         updateWorkflow({...workflow, liked:true});
                     }}>This Poem Changed My Mind About My {workflow.spiritAnimal}!</Button>
-                    <Button type="submit">No</Button>
+                    <Button type="submit">I'm Still Not Convinced</Button>
                 </Modal.Footer>
             </form>
         </>
@@ -152,7 +152,7 @@ export function WorkflowForm04({workflow, updateWorkflow}) {
 export function WorkflowForm05({workflow, updateWorkflow}) {
     return(
         <>
-            <Modal.Header>How About This Poem?</Modal.Header>
+            <Modal.Header>What If We Added {workflow.poeticAddition} to the Poem?</Modal.Header>
             <form id="peomForm" onSubmit={(e) => {
                 e.preventDefault();
                 updateWorkflow({...workflow});

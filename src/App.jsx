@@ -16,6 +16,7 @@ function App() {
         whatIs: null,
         poem: null,
         updatedPoem: null,
+        poeticAddition: null,
         liked: false,
         feedback: null
     });
@@ -41,6 +42,7 @@ function App() {
             whatIs: result.whatIs,
             poem: result.poem,
             updatedPoem: result.updatedPoem,
+            poeticAddition: result.poeticAddition,
             liked: result.liked,
             feedback: result.feedback
         });
@@ -53,6 +55,7 @@ function App() {
                 whatIs: '',
                 poem: '',
                 updatedPoem: '',
+                poeticAddition: '',
                 liked: '',
                 feedback: ''
             });
